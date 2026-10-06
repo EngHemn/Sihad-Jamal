@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary-bg: #111827; /* Midnight */
+    --color-dark: #F3F4F6; /* Off White Text */
+    --color-accent-orange: #3B6EA8; /* Primary Accent */
+    --color-accent-amber: #6B9BD1; /* Hover / Secondary Accent */
+    --color-dark-surface: #1F2937; /* Charcoal */
+    --color-dark-card: #1F2937; /* Charcoal */
+    --color-dark-border: #334155; /* Steel Blue */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-primary-bg);
+    color: var(--color-dark);
+  }
+
+  body {
+    background-color: var(--color-primary-bg);
+    color: var(--color-dark);
+    overflow-x: hidden;
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    selection-background-color: var(--color-accent-orange);
+    selection-color: #ffffff;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-orange);
+    color: #ffffff;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-surface);
+  border-radius: 4px;
+  border: 2px solid var(--color-primary-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-border);
+}
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.bg-grid-pattern-dark {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Glassmorphism */
+.glass-dark {
+  background: rgba(31, 41, 55, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  color: var(--color-dark);
+}
+
+.glass-dark-card {
+  background: rgba(31, 41, 55, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  color: var(--color-dark);
+}
+
+/* Elevated card */
+.yellow-card {
+  background: var(--color-dark-card);
+  border: 1px solid var(--color-dark-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  color: var(--color-dark);
+}
+
+.yellow-card-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.yellow-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: var(--color-accent-orange);
+}
+
+/* Glow effects */
+.glow-orange {
+  box-shadow: 0 0 25px -4px rgba(59, 110, 168, 0.4);
+}
+
+.glow-amber {
+  box-shadow: 0 0 25px -4px rgba(107, 155, 209, 0.4);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 25px -4px rgba(107, 155, 209, 0.2);
+}
+
+/* Code badge styles */
+.code-badge {
+  font-family: var(--font-geist-mono), monospace;
+  background-color: var(--color-primary-bg);
+  color: var(--color-dark);
+  border: 1px solid var(--color-dark-border);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
